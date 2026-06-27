@@ -53,6 +53,13 @@ class STM_Admin {
 	const NONCE_FIELD_UPDATE = 'stm_update_nonce';
 
 	/**
+	 * The nonce action for the edit-task screen link.
+	 *
+	 * @var string
+	 */
+	const NONCE_ACTION_EDIT = 'stm_edit_task';
+
+	/**
 	 * Wire up WordPress hooks.
 	 *
 	 * @return void
@@ -260,8 +267,11 @@ class STM_Admin {
 									),
 									'stm_delete_task_' . $task->ID
 								);
-								$edit_url     = admin_url(
-									'admin.php?page=' . self::PAGE_SLUG . '&edit_task=' . $task->ID
+								$edit_url     = wp_nonce_url(
+									admin_url(
+										'admin.php?page=' . self::PAGE_SLUG . '&edit_task=' . $task->ID
+									),
+									self::NONCE_ACTION_EDIT
 								);
 							?>
 							<tr>
@@ -514,6 +524,12 @@ class STM_Admin {
 	 * @return WP_Post|null
 	 */
 	private function get_editing_task(): ?WP_Post {
+		if ( ! isset( $_GET['_wpnonce'] ) ||
+			! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), self::NONCE_ACTION_EDIT )
+		) {
+			return null;
+		}
+
 		if ( ! isset( $_GET['edit_task'] ) ) {
 			return null;
 		}
