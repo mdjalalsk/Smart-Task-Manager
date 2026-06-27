@@ -1,0 +1,117 @@
+/**
+ * Smart Task Manager – Admin Styles
+ *
+ * Scoped to .stm-wrap so no global wp-admin styles are overridden.
+ *
+ * @package SmartTaskManager
+ */
+
+/* ── Layout ── */
+.stm-wrap {
+	max-width: 960px;
+}
+
+.stm-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 20px 24px;
+	margin-top: 20px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+}
+
+.stm-card h2 {
+	margin-top: 0;
+	padding-bottom: 12px;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 1.1rem;
+}
+
+/* ── Table ── */
+.stm-table .column-status {
+	width: 140px;
+}
+
+.stm-table .column-date {
+	width: 140px;
+}
+
+.stm-table .column-actions {
+	width: 90px;
+}
+
+.stm-actions {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+.stm-action-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 4px;
+	text-decoration: none;
+	color: #50575e;
+	transition: color 0.15s ease, background 0.15s ease;
+}
+
+.stm-action-link .dashicons {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+}
+
+.stm-action-link--edit {
+	color: #2145e6;
+	background: #f0f6fc;
+}
+.stm-action-link--edit:hover,
+.stm-action-link--edit:focus {
+	color: #2271b1;
+	background: #f0f6fc;
+}
+
+.stm-action-link--delete {
+	color: #b32d2e;
+}
+
+.stm-action-link--delete:hover,
+.stm-action-link--delete:focus {
+	color: #8b1d1d;
+	background: #fcf0f1;
+}
+
+.stm-no-tasks {
+	color: #646970;
+	font-style: italic;
+}
+
+/* ── Status badges ── */
+.stm-badge {
+	display: inline-block;
+	padding: 3px 10px;
+	border-radius: 12px;
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.stm-badge--pending {
+	background: #fcf0c8;
+	color: #7a5900;
+}
+
+.stm-badge--completed {
+	background: #d4edda;
+	color: #1a6630;
+}
+
+/* ── Required star ── */
+.stm-wrap .required {
+	color: #b32d2e;
+	font-weight: bold;
+}
